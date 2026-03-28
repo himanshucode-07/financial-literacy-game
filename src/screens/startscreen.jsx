@@ -1,8 +1,22 @@
-export default function StartScreen({ startGame }) {
+function StartScreen({ startGame }) {
   return (
-    <div>
-      <h1 className="text-white">Financial Literacy Game</h1>
-      <button onClick={startGame} className="text-blue border-2px-solid-black">Start Game</button>
+    <div style={{ textAlign: "center", marginTop: "100px" }}>
+      <h1>💰 Financial Literacy Game</h1>
+      <p>Make smart choices and grow your money!</p>
+
+      <button
+        onClick={startGame}
+        style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          marginTop: "20px",
+        }}
+      >
+        Start Game
+      </button>
     </div>
-  );
+  )
 }
+
+export default StartScreen
