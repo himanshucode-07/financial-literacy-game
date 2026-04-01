@@ -17,6 +17,34 @@ function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
     }
   ]
 
+  // 🧠 Restart function
+  function restartGame() {
+    setMoney(5000)
+    setScenarioIndex(0)
+  }
+
+  // 💀 Game Over
+  if (money <= 0) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h1>💀 Game Over</h1>
+        <p>You ran out of money!</p>
+        <button onClick={restartGame}>Restart</button>
+      </div>
+    )
+  }
+
+  // 🏆 Game Complete
+  if (scenarioIndex >= scenarios.length) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h1>🏆 You Completed the Game!</h1>
+        <p>Final Money: ₹{money}</p>
+        <button onClick={restartGame}>Play Again</button>
+      </div>
+    )
+  }
+
   const currentScenario = scenarios[scenarioIndex]
 
   function handleChoice(effect) {
