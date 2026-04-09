@@ -21,10 +21,10 @@ function App() {
         <StartScreen startGame={() => setIsGameStarted(true)} />
       )}
       {
-  text: "Go to party (-₹500, +10 happiness)",
+  {text: "Go to party (-₹500, +10 happiness)",
   effect: {
     money: -500,
-    happiness: +10
+    happiness: +10}
   }
 }
     </>

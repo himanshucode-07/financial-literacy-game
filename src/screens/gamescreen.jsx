@@ -41,7 +41,14 @@ function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
       <StatsBar money={money} />
 
       {/* 🎮 Game content */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div style={{
+                      padding: "12px 24px",
+                       borderRadius: "8px",
+                        border: "none",
+                        background: "#4CAF50",
+                        color: "white",
+                        cursor: "pointer"
+}}>
         <h2>{currentScenario.text}</h2>
 
         {currentScenario.choices.map((choice, index) => (
