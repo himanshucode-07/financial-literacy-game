@@ -1,7 +1,12 @@
+import ProgressBar from "../components/ProgressBar"
 import scenarios from "../data/scenarios"
 import StatsBar from "../components/StatsBar"
 
 function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
+  <ProgressBar 
+  current={scenarioIndex} 
+  total={scenarios.length} 
+/>
 
   function restartGame() {
     setMoney(5000)
@@ -67,7 +72,9 @@ function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
         ))}
       </div>
     </div>
+    
   )
+  
 }
 
 export default GameScreen
