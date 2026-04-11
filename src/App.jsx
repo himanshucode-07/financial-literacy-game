@@ -1,12 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import StartScreen from "./screens/StartScreen"
 import GameScreen from "./screens/GameScreen"
 
 function App() {
   const [isGameStarted, setIsGameStarted] = useState(false)
-  const [money, setMoney] = useState(5000)
-  const [scenarioIndex, setScenarioIndex] = useState(0)
-  const [happiness, setHappiness] = useState(50)
+
+  const [money, setMoney] = useState(() => {
+    return Number(localStorage.getItem("money")) || 5000
+  })
+
+  const [scenarioIndex, setScenarioIndex] = useState(() => {
+    return Number(localStorage.getItem("scenarioIndex")) || 0
+  })
+
+  // 🔥 Save to localStorage
+  useEffect(() => {
+    localStorage.setItem("money", money)
+    localStorage.setItem("scenarioIndex", scenarioIndex)
+  }, [money, scenarioIndex])
 
   return (
     <>
@@ -20,17 +31,8 @@ function App() {
       ) : (
         <StartScreen startGame={() => setIsGameStarted(true)} />
       )}
-      {
-  {text: "Go to party (-₹500, +10 happiness)",
-  effect: {
-    money: -500,
-    happiness: +10}
-  }
-}
     </>
   )
 }
 
 export default App
-
-// 
