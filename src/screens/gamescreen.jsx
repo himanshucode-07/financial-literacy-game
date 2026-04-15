@@ -1,33 +1,40 @@
-import ProgressBar from "../components/ProgressBar"
 import scenarios from "../data/scenarios"
 import StatsBar from "../components/StatsBar"
 
-function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
-  <ProgressBar 
-  current={scenarioIndex} 
-  total={scenarios.length} 
-/>
+function GameScreen({
+  money,
+  setMoney,
+  scenarioIndex,
+  setScenarioIndex,
+  score,
+  setScore
+}) {
 
   function restartGame() {
     setMoney(5000)
     setScenarioIndex(0)
+    setScore(0)
+    localStorage.clear()
   }
 
+  // 💀 Game Over
   if (money <= 0) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h1>💀 Game Over</h1>
-        <p>You ran out of money!</p>
+        <p>Final Score: {score}</p>
         <button onClick={restartGame}>Restart</button>
       </div>
     )
   }
 
+  // 🏆 Game Complete
   if (scenarioIndex >= scenarios.length) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h1>🏆 You Completed the Game!</h1>
         <p>Final Money: ₹{money}</p>
+        <p>Score: {score}</p>
         <button onClick={restartGame}>Play Again</button>
       </div>
     )
@@ -36,24 +43,16 @@ function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
   const currentScenario = scenarios[scenarioIndex]
 
   function handleChoice(effect) {
-    setMoney(money + effect)
+    setMoney(money + effect.money)
+    setScore(score + effect.score)
     setScenarioIndex(scenarioIndex + 1)
   }
 
   return (
     <div>
-      {/* 🔥 Top bar */}
-      <StatsBar money={money} />
+      <StatsBar money={money} score={score} />
 
-      {/* 🎮 Game content */}
-      <div style={{
-                      padding: "12px 24px",
-                       borderRadius: "8px",
-                        border: "none",
-                        background: "#4CAF50",
-                        color: "white",
-                        cursor: "pointer"
-}}>
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h2>{currentScenario.text}</h2>
 
         {currentScenario.choices.map((choice, index) => (
@@ -72,9 +71,7 @@ function GameScreen({ money, setMoney, scenarioIndex, setScenarioIndex }) {
         ))}
       </div>
     </div>
-    
   )
-  
 }
 
 export default GameScreen

@@ -1,12 +1,14 @@
-function StatsBar({ money }) {
+function StatsBar({ money, score }) {
   return (
     <div style={{
       padding: "10px",
-      background: "#eee",
+      background: "#333",
+      color: "white",
       display: "flex",
-      justifyContent: "space-between"
+      justifyContent: "space-around"
     }}>
-      <h3>💰 Money: ₹{money}</h3>
+      <h3>💰 ₹{money}</h3>
+      <h3>🏆 Score: {score}</h3>
     </div>
   )
 }

@@ -13,11 +13,15 @@ function App() {
     return Number(localStorage.getItem("scenarioIndex")) || 0
   })
 
-  // 🔥 Save to localStorage
+  const [score, setScore] = useState(() => {
+    return Number(localStorage.getItem("score")) || 0
+  })
+
   useEffect(() => {
     localStorage.setItem("money", money)
     localStorage.setItem("scenarioIndex", scenarioIndex)
-  }, [money, scenarioIndex])
+    localStorage.setItem("score", score)
+  }, [money, scenarioIndex, score])
 
   return (
     <>
@@ -27,6 +31,8 @@ function App() {
           setMoney={setMoney}
           scenarioIndex={scenarioIndex}
           setScenarioIndex={setScenarioIndex}
+          score={score}
+          setScore={setScore}
         />
       ) : (
         <StartScreen startGame={() => setIsGameStarted(true)} />
