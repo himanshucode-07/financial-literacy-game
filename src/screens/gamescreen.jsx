@@ -1,6 +1,8 @@
 import scenarios from "../data/scenarios"
 import StatsBar from "../components/StatsBar"
 
+const [isAnswered, setIsAnswered] = useState(false)
+
 function GameScreen({
   money,
   setMoney,
@@ -47,8 +49,22 @@ function GameScreen({
     setScore(score + effect.score)
     setScenarioIndex(scenarioIndex + 1)
   }
+  function handleChoice(effect) {
+  if (isAnswered) return
+
+  setIsAnswered(true)
+
+  setMoney(money + effect.money)
+  setScore(score + effect.score)
+
+  setTimeout(() => {
+    setScenarioIndex(scenarioIndex + 1)
+    setIsAnswered(false)
+  }, 500)
+}
 
   return (
+    
     <div>
       <StatsBar money={money} score={score} />
 
@@ -68,9 +84,16 @@ function GameScreen({
           >
             {choice.text}
           </button>
+          
         ))}
       </div>
     </div>
+    <button
+  disabled={isAnswered}
+  ...
+></button>
+
+    
   )
 }
 
