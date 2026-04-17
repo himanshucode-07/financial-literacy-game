@@ -1,5 +1,6 @@
 import scenarios from "../data/scenarios"
 import StatsBar from "../components/StatsBar"
+const [selectedIndex, setSelectedIndex] = useState(null)
 
 const [isAnswered, setIsAnswered] = useState(false)
 
@@ -41,6 +42,17 @@ function GameScreen({
       </div>
     )
   }
+  function handleChoice(effect, index) {
+  setSelectedIndex(index)
+
+  setMoney(money + effect.money)
+  setScore(score + effect.score)
+
+  setTimeout(() => {
+    setScenarioIndex(scenarioIndex + 1)
+    setSelectedIndex(null)
+  }, 500)
+}
 
   const currentScenario = scenarios[scenarioIndex]
 
@@ -63,38 +75,31 @@ function GameScreen({
   }, 500)
 }
 
+  {currentScenario.choices.map((choice, index) => {
+  const isSelected = selectedIndex === index
+
+  let bgColor = "#ddd"
+
+  if (isSelected) {
+    bgColor = choice.effect.money >= 0 ? "green" : "red"
+  }
+
   return (
-    
-    <div>
-      <StatsBar money={money} score={score} />
-
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h2>{currentScenario.text}</h2>
-
-        {currentScenario.choices.map((choice, index) => (
-          <button
-            key={index}
-            onClick={() => handleChoice(choice.effect)}
-            style={{
-              display: "block",
-              margin: "10px auto",
-              padding: "10px 20px",
-              cursor: "pointer"
-            }}
-          >
-            {choice.text}
-          </button>
-          
-        ))}
-      </div>
-    </div>
     <button
-  disabled={isAnswered}
-  ...
-></button>
-
-    
+      key={index}
+      onClick={() => handleChoice(choice.effect, index)}
+      style={{
+        display: "block",
+        margin: "10px auto",
+        padding: "10px 20px",
+        cursor: "pointer",
+        background: bgColor,
+        color: isSelected ? "white" : "black"
+      }}
+    >
+      {choice.text}
+    </button>
   )
-}
+})}}
 
 export default GameScreen
