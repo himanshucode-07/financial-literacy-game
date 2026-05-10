@@ -13,6 +13,7 @@ function GameScreen({
 
   const [selectedIndex, setSelectedIndex] = useState(null)
   const [isAnswered, setIsAnswered] = useState(false)
+  const [moneyChange, setMoneyChange] = useState(null)
 
   function restartGame() {
     setMoney(5000)
@@ -53,6 +54,9 @@ function GameScreen({
     setIsAnswered(true)
     setSelectedIndex(index)
 
+    // 🔥 show money change
+    setMoneyChange(effect.money)
+
     setMoney(money + effect.money)
     setScore(score + effect.score)
 
@@ -60,6 +64,7 @@ function GameScreen({
       setScenarioIndex(scenarioIndex + 1)
       setSelectedIndex(null)
       setIsAnswered(false)
+      setMoneyChange(null)
     }, 500)
   }
 
@@ -71,6 +76,18 @@ function GameScreen({
       <div style={{ textAlign: "center", marginTop: "50px" }}>
 
         <h2>{currentScenario.text}</h2>
+
+        {/* 🔥 Money change feedback */}
+        {moneyChange !== null && (
+          <h3
+            style={{
+              color: moneyChange >= 0 ? "green" : "red"
+            }}
+          >
+            {moneyChange >= 0 ? "+" : ""}
+            ₹{moneyChange}
+          </h3>
+        )}
 
         <p>
           Question {scenarioIndex + 1} / {scenarios.length}
