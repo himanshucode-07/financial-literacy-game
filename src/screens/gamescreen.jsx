@@ -15,6 +15,9 @@ function GameScreen({
   const [isAnswered, setIsAnswered] = useState(false)
   const [moneyChange, setMoneyChange] = useState(null)
 
+  // 🔥 fade animation state
+  const [fade, setFade] = useState(true)
+
   function restartGame() {
     setMoney(5000)
     setScenarioIndex(0)
@@ -54,6 +57,9 @@ function GameScreen({
     setIsAnswered(true)
     setSelectedIndex(index)
 
+    // 🔥 fade out
+    setFade(false)
+
     // 🔥 show money change
     setMoneyChange(effect.money)
 
@@ -61,10 +67,16 @@ function GameScreen({
     setScore(score + effect.score)
 
     setTimeout(() => {
+
       setScenarioIndex(scenarioIndex + 1)
+
       setSelectedIndex(null)
       setIsAnswered(false)
       setMoneyChange(null)
+
+      // 🔥 fade in
+      setFade(true)
+
     }, 500)
   }
 
@@ -73,7 +85,15 @@ function GameScreen({
 
       <StatsBar money={money} score={score} />
 
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      {/* 🔥 Animated content */}
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "50px",
+          opacity: fade ? 1 : 0,
+          transition: "opacity 0.3s ease"
+        }}
+      >
 
         <h2>{currentScenario.text}</h2>
 
@@ -119,7 +139,8 @@ function GameScreen({
                 background: bgColor,
                 color: isSelected ? "white" : "black",
                 border: "none",
-                borderRadius: "8px"
+                borderRadius: "8px",
+                transition: "0.2s"
               }}
             >
               {choice.text}
