@@ -140,7 +140,14 @@ function GameScreen({
                 color: isSelected ? "white" : "black",
                 border: "none",
                 borderRadius: "8px",
-                transition: "0.2s"
+
+                // 🔥 smooth animation
+                transition: "all 0.2s ease",
+
+                // 🔥 scale effect
+                transform: isSelected
+                  ? "scale(1.05)"
+                  : "scale(1)"
               }}
             >
               {choice.text}
