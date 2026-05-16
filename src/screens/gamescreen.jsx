@@ -8,7 +8,8 @@ function GameScreen({
   scenarioIndex,
   setScenarioIndex,
   score,
-  setScore
+  setScore,
+  bestScore
 }) {
 
   const [selectedIndex, setSelectedIndex] = useState(null)
@@ -30,8 +31,15 @@ function GameScreen({
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h1>💀 Game Over</h1>
+
         <p>Final Score: {score}</p>
-        <button onClick={restartGame}>Restart</button>
+
+        {/* 🔥 Best score */}
+        <p>🏆 Best Score: {bestScore}</p>
+
+        <button onClick={restartGame}>
+          Restart
+        </button>
       </div>
     )
   }
@@ -41,9 +49,17 @@ function GameScreen({
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <h1>🏆 You Completed the Game!</h1>
+
         <p>Final Money: ₹{money}</p>
+
         <p>Score: {score}</p>
-        <button onClick={restartGame}>Play Again</button>
+
+        {/* 🔥 Best score */}
+        <p>🏆 Best Score: {bestScore}</p>
+
+        <button onClick={restartGame}>
+          Play Again
+        </button>
       </div>
     )
   }
@@ -113,6 +129,11 @@ function GameScreen({
           Question {scenarioIndex + 1} / {scenarios.length}
         </p>
 
+        {/* 🔥 Best score display */}
+        <p>
+          🏆 Best Score: {bestScore}
+        </p>
+
         {currentScenario.choices.map((choice, index) => {
 
           const isSelected = selectedIndex === index
@@ -121,7 +142,9 @@ function GameScreen({
 
           if (isSelected) {
             bgColor =
-              choice.effect.money >= 0 ? "green" : "red"
+              choice.effect.money >= 0
+                ? "green"
+                : "red"
           }
 
           return (
