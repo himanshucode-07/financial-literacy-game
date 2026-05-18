@@ -66,6 +66,10 @@ function GameScreen({
 
   const currentScenario = scenarios[scenarioIndex]
 
+  // 🔥 Progress percentage
+  const progress =
+    ((scenarioIndex + 1) / scenarios.length) * 100
+
   function handleChoice(effect, index) {
 
     if (isAnswered) return
@@ -128,6 +132,27 @@ function GameScreen({
         <p>
           Question {scenarioIndex + 1} / {scenarios.length}
         </p>
+
+        {/* 🔥 Progress bar */}
+        <div
+          style={{
+            width: "80%",
+            height: "10px",
+            background: "#ddd",
+            margin: "20px auto",
+            borderRadius: "10px",
+            overflow: "hidden"
+          }}
+        >
+          <div
+            style={{
+              width: `${progress}%`,
+              height: "100%",
+              background: "green",
+              transition: "0.3s"
+            }}
+          />
+        </div>
 
         {/* 🔥 Best score display */}
         <p>
