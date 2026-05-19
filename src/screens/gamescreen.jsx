@@ -9,7 +9,11 @@ function GameScreen({
   setScenarioIndex,
   score,
   setScore,
-  bestScore
+  bestScore,
+
+  // 🔥 History props
+  history,
+  setHistory
 }) {
 
   const [selectedIndex, setSelectedIndex] = useState(null)
@@ -23,6 +27,10 @@ function GameScreen({
     setMoney(5000)
     setScenarioIndex(0)
     setScore(0)
+
+    // 🔥 clear history
+    setHistory([])
+
     localStorage.clear()
   }
 
@@ -85,6 +93,15 @@ function GameScreen({
 
     setMoney(money + effect.money)
     setScore(score + effect.score)
+
+    // 🔥 Add to history
+    setHistory((prev) => [
+      ...prev,
+      {
+        text: currentScenario.text,
+        amount: effect.money
+      }
+    ])
 
     setTimeout(() => {
 
@@ -202,6 +219,25 @@ function GameScreen({
             </button>
           )
         })}
+
+        {/* 🔥 History Section */}
+        <div
+          style={{
+            marginTop: "30px"
+          }}
+        >
+          <h3>📜 History</h3>
+
+          {history.map((item, index) => (
+            <p key={index}>
+              {item.amount >= 0 ? "✅" : "❌"}{" "}
+              {item.text}
+              {" "}
+              ({item.amount >= 0 ? "+" : ""}
+              ₹{item.amount})
+            </p>
+          ))}
+        </div>
 
       </div>
     </div>

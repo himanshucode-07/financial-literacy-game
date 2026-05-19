@@ -23,12 +23,24 @@ function App() {
     return Number(localStorage.getItem("bestScore")) || 0
   })
 
+  // 🔥 Decision history state
+  const [history, setHistory] = useState(() => {
+    return JSON.parse(localStorage.getItem("history")) || []
+  })
+
   // 🔥 Save progress
   useEffect(() => {
     localStorage.setItem("money", money)
     localStorage.setItem("scenarioIndex", scenarioIndex)
     localStorage.setItem("score", score)
-  }, [money, scenarioIndex, score])
+
+    // 🔥 Save history
+    localStorage.setItem(
+      "history",
+      JSON.stringify(history)
+    )
+
+  }, [money, scenarioIndex, score, history])
 
   // 🔥 Update best score
   useEffect(() => {
@@ -53,6 +65,10 @@ function App() {
 
           // 🔥 Best score props
           bestScore={bestScore}
+
+          // 🔥 History props
+          history={history}
+          setHistory={setHistory}
         />
       ) : (
         <StartScreen
