@@ -1,6 +1,7 @@
 import { useState } from "react"
 import scenarios from "../data/scenarios"
 import StatsBar from "../components/StatsBar"
+import MoneyGoal from "../components/MoneyGoal"
 
 function GameScreen({
   money,
