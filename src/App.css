@@ -1,0 +1,38 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.intro-screen {
+  text-align: center;
+  padding: 2rem;
+}
+
+.intro-screen h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro-screen p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.intro-screen button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.intro-screen button:hover {
+  background-color: #16a34a;
+}
