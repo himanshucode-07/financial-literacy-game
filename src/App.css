@@ -35,3 +35,13 @@
   background-color: #334155;
   border-color: #22c55e;
 }
+
+.stats-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1e293b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
