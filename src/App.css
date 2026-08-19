@@ -1,47 +1,51 @@
-.game-screen {
+.game-complete {
   text-align: center;
   padding: 2rem;
   max-width: 500px;
 }
 
-.game-screen h2 {
-  font-size: 1.5rem;
+.game-complete h2 {
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
 
-.game-screen p {
+.game-complete h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
   color: #94a3b8;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  background-color: #1e293b;
+  border-radius: 8px;
+  padding: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.history-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #334155;
+  font-size: 0.9rem;
 }
 
-.choices button {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  border: 1px solid #334155;
-  padding: 0.75rem 1rem;
+.history-list li:last-child {
+  border-bottom: none;
+}
+
+.game-complete button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 0.95rem;
-  text-align: left;
 }
 
-.choices button:hover {
-  background-color: #334155;
-  border-color: #22c55e;
-}
-
-.stats-bar {
-  display: flex;
-  justify-content: space-between;
-  background-color: #1e293b;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+.game-complete button:hover {
+  background-color: #16a34a;
 }
