@@ -46,6 +46,8 @@ function App() {
           money={money}
           score={score}
           scenario={currentScenario}
+          currentIndex={currentScenarioIndex}
+          totalScenarios={scenarios.length}
           onChoice={handleChoice}
         />
       )}
