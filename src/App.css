@@ -73,3 +73,15 @@
   background-color: #22c55e;
   transition: width 0.3s ease;
 }
+
+.high-score-display {
+  color: #facc15;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.new-high-score {
+  color: #facc15;
+  font-weight: 700;
+  font-size: 1.1rem;
+}

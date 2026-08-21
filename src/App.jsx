@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import IntroScreen from './components/IntroScreen';
 import GameScreen from './components/GameScreen';
 import scenarios from './data/scenarios';
+import { getHighScore, saveHighScore } from './utils/storage';
 import './App.css';
 
 function App() {
@@ -10,6 +11,20 @@ function App() {
   const [score, setScore] = useState(0);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [history, setHistory] = useState([]);
+  const [highScore, setHighScore] = useState(0);
+
+  useEffect(() => {
+    const savedHighScore = getHighScore();
+    setHighScore(savedHighScore);
+  }, []);
+
+  useEffect(() => {
+    const isGameComplete = gameStarted && currentScenarioIndex >= scenarios.length;
+    if (isGameComplete && score > highScore) {
+      setHighScore(score);
+      saveHighScore(score);
+    }
+  }, [currentScenarioIndex, gameStarted, score, highScore]);
 
   const handleStart = () => {
     setGameStarted(true);
@@ -39,7 +54,7 @@ function App() {
 
   return (
     <div className="app">
-      {!gameStarted && <IntroScreen onStart={handleStart} />}
+      {!gameStarted && <IntroScreen onStart={handleStart} highScore={highScore} />}
 
       {gameStarted && currentScenario && (
         <GameScreen
@@ -57,6 +72,9 @@ function App() {
           <h2>🎉 Game Complete!</h2>
           <p>Final Score: {score}</p>
           <p>Final Money: ₹{money}</p>
+          {score === highScore && score > 0 && (
+            <p className="new-high-score">🏆 New High Score!</p>
+          )}
 
           <h3>Your Decisions</h3>
           <ul className="history-list">
