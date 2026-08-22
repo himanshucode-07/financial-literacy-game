@@ -1,10 +1,11 @@
 import ProgressBar from './ProgressBar';
 
-function GameScreen({ money, score, scenario, currentIndex, totalScenarios, onChoice }) {
+function GameScreen({ money, savings, score, scenario, currentIndex, totalScenarios, onChoice }) {
   return (
     <div className="game-screen">
       <div className="stats-bar">
         <span>💰 ₹{money}</span>
+        <span>🏦 ₹{savings}</span>
         <span>⭐ Score: {score}</span>
       </div>
 

@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [money, setMoney] = useState(5000);
+  const [savings, setSavings] = useState(0);
   const [score, setScore] = useState(0);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [history, setHistory] = useState([]);
@@ -34,6 +35,7 @@ function App() {
     const currentScenario = scenarios[currentScenarioIndex];
 
     setMoney((prevMoney) => prevMoney + choice.moneyChange);
+    setSavings((prevSavings) => prevSavings + choice.savingsChange);
     setScore((prevScore) => prevScore + choice.scoreChange);
     setHistory((prevHistory) => [
       ...prevHistory,
@@ -44,6 +46,7 @@ function App() {
 
   const handleRestart = () => {
     setMoney(5000);
+    setSavings(0);
     setScore(0);
     setCurrentScenarioIndex(0);
     setHistory([]);
@@ -59,6 +62,7 @@ function App() {
       {gameStarted && currentScenario && (
         <GameScreen
           money={money}
+          savings={savings}
           score={score}
           scenario={currentScenario}
           currentIndex={currentScenarioIndex}
@@ -72,6 +76,7 @@ function App() {
           <h2>🎉 Game Complete!</h2>
           <p>Final Score: {score}</p>
           <p>Final Money: ₹{money}</p>
+          <p>Final Savings: ₹{savings}</p>
           {score === highScore && score > 0 && (
             <p className="new-high-score">🏆 New High Score!</p>
           )}
