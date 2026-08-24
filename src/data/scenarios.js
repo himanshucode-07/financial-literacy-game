@@ -30,6 +30,36 @@ const scenarios = [
       { text: "Skip it, too risky", moneyChange: 0, savingsChange: 0, scoreChange: 0 },
     ],
   },
+  {
+    id: 4,
+    title: "Medical Emergency",
+    description: "A family member needs ₹1500 for urgent medical treatment.",
+    choices: [
+      { text: "Pay from savings immediately", moneyChange: 0, savingsChange: -1500, scoreChange: 15 },
+      { text: "Pay from money, skip savings", moneyChange: -1500, savingsChange: 0, scoreChange: 5 },
+      { text: "Take a high-interest loan", moneyChange: 0, savingsChange: 0, scoreChange: -12 },
+    ],
+  },
+  {
+    id: 5,
+    title: "Freelance Side Income",
+    description: "You earned an extra ₹2000 from a freelance project. What next?",
+    choices: [
+      { text: "Put it all into savings", moneyChange: 0, savingsChange: 2000, scoreChange: 14 },
+      { text: "Split between savings and spending", moneyChange: 1000, savingsChange: 1000, scoreChange: 10 },
+      { text: "Spend it all on a treat", moneyChange: 2000, savingsChange: 0, scoreChange: -2 },
+    ],
+  },
+  {
+    id: 6,
+    title: "New Phone Temptation",
+    description: "A new phone costs ₹3000. Yours works fine, but this one is really tempting.",
+    choices: [
+      { text: "Skip it, keep saving", moneyChange: 0, savingsChange: 0, scoreChange: 10 },
+      { text: "Buy it using savings", moneyChange: 0, savingsChange: -3000, scoreChange: -8 },
+      { text: "Buy it using current money", moneyChange: -3000, savingsChange: 0, scoreChange: -5 },
+    ],
+  },
 ];
 
 export default scenarios;
