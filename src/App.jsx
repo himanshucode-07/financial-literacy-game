@@ -27,6 +27,14 @@ function App() {
     }
   }, [currentScenarioIndex, gameStarted, score, highScore]);
 
+  if (!scenarios || scenarios.length === 0) {
+    return (
+      <div className="app">
+        <h2>⚠️ No scenarios available. Please check scenarios.js</h2>
+      </div>
+    );
+  }
+
   const handleStart = () => {
     setGameStarted(true);
   };

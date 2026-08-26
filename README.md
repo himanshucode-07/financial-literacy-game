@@ -1,16 +1,38 @@
-# React + Vite
+# 💰 Financial Literacy Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A decision-based game that teaches financial literacy concepts — saving, spending, and investing — through realistic everyday scenarios.
 
-Currently, two official plugins are available:
+## 🎯 Current Status: Phase 1 Complete (Frontend Foundation)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built as part of a 60-day MERN stack learning project (13 Aug – 11 Oct 2026).
 
-## React Compiler
+## Features (Phase 1)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 6 financial decision scenarios
+- Real-time money, savings, and score tracking
+- Progress bar showing game completion
+- Decision history log
+- Persistent high score (localStorage)
+- Fully replayable game loop
 
-## Expanding the ESLint configuration
+## Tech Stack (so far)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite)
+- Plain CSS
+
+## Coming Next (Phase 2+)
+
+- Improved UI with a proper design system
+- React Router for multiple pages
+- Backend with Node.js, Express, MongoDB
+- User authentication
+- Leaderboard & achievements
+- Full deployment
+
+## Running Locally
+
+\`\`\`bash
+cd client
+npm install
+npm run dev
+\`\`\`
