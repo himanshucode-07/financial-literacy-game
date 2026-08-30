@@ -30,7 +30,9 @@ function App() {
   if (!scenarios || scenarios.length === 0) {
     return (
       <div className="app">
-        <h2>⚠️ No scenarios available. Please check scenarios.js</h2>
+        <h2 className="text-slate-100 text-center p-10">
+          ⚠️ No scenarios available. Please check scenarios.js
+        </h2>
       </div>
     );
   }
@@ -80,25 +82,31 @@ function App() {
       )}
 
       {gameStarted && !currentScenario && (
-        <div className="game-complete">
-          <h2>🎉 Game Complete!</h2>
-          <p>Final Score: {score}</p>
-          <p>Final Money: ₹{money}</p>
-          <p>Final Savings: ₹{savings}</p>
+        <div className="max-w-md mx-auto px-6 py-10 text-center">
+          <h2 className="text-2xl font-bold text-slate-100 mb-1">🎉 Game Complete!</h2>
+          <p className="text-slate-300">Final Score: {score}</p>
+          <p className="text-slate-300">Final Money: ₹{money}</p>
+          <p className="text-slate-300 mb-2">Final Savings: ₹{savings}</p>
+
           {score === highScore && score > 0 && (
-            <p className="new-high-score">🏆 New High Score!</p>
+            <p className="text-yellow-400 font-bold mb-4">🏆 New High Score!</p>
           )}
 
-          <h3>Your Decisions</h3>
-          <ul className="history-list">
+          <h3 className="text-slate-400 text-sm font-semibold mt-6 mb-3">Your Decisions</h3>
+          <ul className="text-left bg-slate-800 rounded-lg p-4 mb-6 divide-y divide-slate-700">
             {history.map((entry, index) => (
-              <li key={index}>
+              <li key={index} className="py-2 text-sm text-slate-200">
                 <strong>{entry.scenarioTitle}:</strong> {entry.choiceText}
               </li>
             ))}
           </ul>
 
-          <button onClick={handleRestart}>Play Again</button>
+          <button
+            onClick={handleRestart}
+            className="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+          >
+            Play Again
+          </button>
         </div>
       )}
     </div>
