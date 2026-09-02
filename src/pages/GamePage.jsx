@@ -1,6 +1,6 @@
 import GameScreen from '../components/GameScreen';
 import scenarios from '../data/scenarios';
-import useGameState from '../hooks/useGameState';
+import { useGame } from '../context/GameContext';
 
 function GamePage() {
   const {
@@ -13,7 +13,7 @@ function GamePage() {
     currentScenarioIndex,
     makeChoice,
     restartGame,
-  } = useGameState();
+  } = useGame();
 
   if (currentScenario) {
     return (
