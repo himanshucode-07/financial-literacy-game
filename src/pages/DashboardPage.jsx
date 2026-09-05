@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
+import EmptyState from '../components/EmptyState';
 
 function DashboardPage() {
   const { money, savings, score, highScore, history, gameStarted } = useGame();
@@ -32,11 +33,15 @@ function DashboardPage() {
       </h3>
 
       {history.length === 0 ? (
-        <p className="text-slate-500 text-sm bg-slate-800 rounded-lg p-4">
-          {gameStarted
-            ? "No decisions made yet — go make some choices!"
-            : "You haven't started a game yet."}
-        </p>
+        <EmptyState
+          icon={gameStarted ? "🎯" : "🎮"}
+          title={gameStarted ? "No decisions yet" : "No game in progress"}
+          description={
+            gameStarted
+              ? "Go make some choices in the game!"
+              : "Start a game to see your decisions here."
+          }
+        />
       ) : (
         <ul className="text-left bg-slate-800 rounded-lg p-4 mb-6 divide-y divide-slate-700">
           {history.map((entry, index) => (
